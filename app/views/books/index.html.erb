@@ -1,2 +1,33 @@
 <h2>User info</h2>
-<%= image_tag >
+<%# if @User.image.attached?
+    image_tag @User.image
+else
+    image_tag 'no_image'
+end %>
+<table class="table">
+    <tbody>
+      <tr>
+	      <th>name</th><th>なまえ</th>
+      </tr>
+      <tr>
+	      <th>introduction</th><th>これはどこにあるんだ</th>
+      </tr>
+    </tbody>
+</table>
+<%= link_to "プロフィール編集", edit_user_path(current_user.id) %>
+
+<h2>New book</h2>
+<%= form_with model: Book.new, local: true do |f| %>
+    <div class="form_group">
+        <p>Title</p>
+        <%= f.text_field :title %>
+    </div>
+    <div class="form_group">
+        <p>Opinion</p>
+        <%= f.text_area :body %>
+    </div>
+    <div class="form_group">
+        <%= f.submit "Create Book"%>
+        <%#btn btn-success%>
+    </div>
+<% end %>
