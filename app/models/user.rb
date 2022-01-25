@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :book, dependent: :destroy
-  
+
   def get_profile_image(size)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
@@ -13,5 +13,5 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize: size).processed
   end
-  
+
 end

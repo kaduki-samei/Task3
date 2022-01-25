@@ -1,8 +1,8 @@
 <h2>User info</h2>
-<% if @user.image.attached? %>
-    <%= image_tag @user.image %>
+<% if @user.profile_image.attached? %>
+  <%= image_tag @user.profile_imagee, size: "63x63" %>
 <% else %>
-    <%= image_tag 'no_image' %>
+  <%= image_tag 'no_image', size: "63x63" %>
 <% end %>
 <table class="table">
     <tbody>
