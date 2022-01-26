@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :book, dependent: :destroy
+  has_many :books, dependent: :destroy
 
   def get_profile_image(size)
     unless profile_image.attached?
@@ -14,7 +14,7 @@ class User < ApplicationRecord
     profile_image.variant(resize: size).processed
   end
 
-  validates :name, presence: true, length: { minimum: 2, maximum: 20 }
+  validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }
   validates :introduction, length: { maximum: 50 }
 
 
