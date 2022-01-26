@@ -21,7 +21,7 @@
             <tb><%= @post.body %></tb>
             <% if @post.user == current_user %>
               <tb><%= link_to "Edit", edit_book_path(@post), class: "btn btn-success" %></tb>
-              <tb><%= link_to "Destroy", "/books/(@post.id)", method: :delete, class: "btn btn-danger " %></tb>
+              <tb><%= link_to "Destroy", delete_book_path(@post.id), method: :delete, class: "btn btn-danger " %></tb>
             <% end %>
           </tr>
         </tbody>
